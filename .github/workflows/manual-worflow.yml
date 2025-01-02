@@ -30,7 +30,8 @@ jobs:
           echo "Encoded password saved to password.txt"
           echo "Param1: ${{ github.event.inputs.param1 }}"
           echo "Param2: ${{ github.event.inputs.param2 }}"
-          echo "Environment Variable: $${{vars.URL}} $ENV_URL",
+          echo "Environment Variable: $${{vars.URL}}",
+          echo "Environment Variable: $ENV_URL",
           echo "repository Variable: $MY_URL"
 
       - name: Upload password for testing
