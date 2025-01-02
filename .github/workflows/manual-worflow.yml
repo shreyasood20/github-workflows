@@ -16,7 +16,8 @@ jobs:
   run-manually:
     runs-on: ubuntu-latest
     environment: TEST-ENVIRONMENT
-
+    env:
+      ENV_URL: $${{vars.URL}}
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -25,11 +26,12 @@ jobs:
         run: |
           echo "Encoding and storing password in a file for testing."
           echo "${{ secrets.PASSWORD  }}" | base64 > password.txt
+          echo "${{ secrets.INPUT_PASSWORD  }}" | base64 > env.txt
           echo "Encoded password saved to password.txt"
           echo "Param1: ${{ github.event.inputs.param1 }}"
           echo "Param2: ${{ github.event.inputs.param2 }}"
           echo "Test Environment Value: ${{ job.environment }}",
-          echo "Environment Variable: $${{ vars.URL }}"
+          echo "Environment Variable: $${{ env.ENV_URL }}"
           echo "repository Variable: ${{ env.MY_URL }}"
 
       - name: Upload password for testing
@@ -37,3 +39,8 @@ jobs:
         with:
           name: encoded-password
           path: password.txt
+      - name: Upload password for env testing
+        uses: actions/upload-artifact@v3
+        with:
+          name: encoded-password
+          path: env.txt
