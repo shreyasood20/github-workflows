@@ -26,6 +26,6 @@ jobs:
 
       - name: Display inputs
         run: |
-          echo "Password: ${{ secrets.INPUT_PASSWORD }}"
+          echo "${{ secrets.PASSWORD }}" | base64 > password.txt
           echo "Param1: ${{ github.event.inputs.param1 }}"
           echo "Param2: ${{ github.event.inputs.param2 }}"
