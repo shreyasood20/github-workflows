@@ -10,12 +10,12 @@ on:
         description: "Enter the second parameter"
         required: false
         type: string
-environment: TEST-ENVIRONMENT
 env:
  MY_URL: $${{vars.URL}},
 jobs:
   run-manually:
     runs-on: ubuntu-latest
+    environment: TEST-ENVIRONMENT
 
     steps:
       - name: Check out code
