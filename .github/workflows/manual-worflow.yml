@@ -30,9 +30,9 @@ jobs:
           echo "Encoded password saved to password.txt"
           echo "Param1: ${{ github.event.inputs.param1 }}"
           echo "Param2: ${{ github.event.inputs.param2 }}"
-          echo "Test Environment Value: ${{ job.environment }}",
-          echo "Environment Variable: $${{ env.ENV_URL }}"
-          echo "repository Variable: ${{ env.MY_URL }}"
+          echo "Test Environment Value: ${{ jobs.environment }}",
+          echo "Environment Variable: $${{vars.URL}}", ${env.ENV_URL}
+          echo "repository Variable: ${ env.MY_URL }"
 
       - name: Upload password for testing
         uses: actions/upload-artifact@v3
