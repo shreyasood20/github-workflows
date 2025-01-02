@@ -1,0 +1,31 @@
+name: Manual Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      password:
+        description: "Enter the password"
+        required: true
+        type: string
+      param1:
+        description: "Enter the first parameter"
+        required: true
+        type: string
+      param2:
+        description: "Enter the second parameter"
+        required: false
+        type: string
+
+jobs:
+  run-manually:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Display inputs
+        run: |
+          echo "Password: ${{ secrets.INPUT_PASSWORD }}"
+          echo "Param1: ${{ github.event.inputs.param1 }}"
+          echo "Param2: ${{ github.event.inputs.param2 }}"
