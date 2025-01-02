@@ -11,7 +11,7 @@ on:
         required: false
         type: string
 env:
- MY_URL: $${{vars.URL}},
+ MY_URL: ${{vars.URL}},
 jobs:
   run-manually:
     runs-on: ubuntu-latest
