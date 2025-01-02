@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: TEST-ENVIRONMENT
     env:
-      ENV_URL: $${{vars.URL}}
+      ENV_URL: ${{vars.URL}}
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -30,9 +30,9 @@ jobs:
           echo "Encoded password saved to password.txt"
           echo "Param1: ${{ github.event.inputs.param1 }}"
           echo "Param2: ${{ github.event.inputs.param2 }}"
-          echo "Environment Variable: $${{vars.URL}}",
-          echo "Environment Variable: $ENV_URL",
-          echo "repository Variable: $MY_URL"
+          echo "Environment Variable (vars.URL): ${{ vars.URL }}"  # Corrected reference to the vars URL
+          echo "Environment Variable (env.ENV_URL): $ENV_URL"  # Accessing shell env variable ENV_URL
+          echo "repository Variable (MY_URL): $MY_URL"  # Accessing the MY_URL shell env variable
 
       - name: Upload password for testing
         uses: actions/upload-artifact@v3
