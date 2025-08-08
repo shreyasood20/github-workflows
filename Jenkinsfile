@@ -6,7 +6,7 @@ pipeline {
             steps {
                 git branch: 'main', 
                     credentialsId: 'github-creds', 
-                    url: 'https://github.com/YOUR_USERNAME/YOUR_REPO.git'
+                    url: 'https://github.com/shreyasood20/github-workflow.git'
             }
         }
         stage('Build') {
